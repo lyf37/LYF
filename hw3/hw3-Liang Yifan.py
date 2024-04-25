@@ -6,11 +6,6 @@ from openpyxl import Workbook, load_workbook
 
 
 #homework3 by Liang Yifan
-class tne:
-    def __init__(self,De='off device',R='stop'):
-        self.De=De
-        self.R=R
-
 gravity=9.8
 g=gravity
 
