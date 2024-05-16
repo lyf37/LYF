@@ -1,0 +1,41 @@
+@startuml
+class Manager {
+  send_welcome(message)
+  send_help(message)
+  send_check_process(message)
+  send_terminate_process(message)
+  send_auto_terminate_process(message)
+  send_report_process(message)
+  send_add_blacklist_process(message)
+}
+
+
+class Application {
+  __proc_exist(process_name)
+  __proc_terminate(pid)
+  __proc_time(pid)
+  __bot()
+} 
+
+class Monitor {
+  check_process(message)
+  terminate_process(message)
+  auto_terminate_process(message)
+  report_process(message)
+  add_blacklist_process(message)
+}
+
+class Blacklist {
+  add_blacklist(message)
+  delete_blacklist(message)
+}
+
+class TimeLimit {
+  set_time_limit(message)
+}
+
+Manager *- Application : has
+Application --> Blacklist 
+Application --> TimeLimit
+Application -> Monitor : > depend on
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+actor Parents as p
+actor Children as c
+package Monitor {
+  usecase "Remote interrupt game process" as Mon1 
+  usecase "Monitor application processes" as Mon2 
+  usecase "Record game time" as Mon3 
+  usecase "Automatically interrupt game process at time limit" as Mon4
+}
+package Manager {
+  usecase "TeleBot start" as Man1
+  usecase "Time limit setting" as Man2
+  usecase "Application whitelist settings" as Man3
+  usecase "Recent statistical reports" as Man4
+  usecase "Remote game process interrupt" as Man5
+  usecase "Remote game process check" as Man6
+}
+
+p --> Manager 
+Man2 --> Mon4 
+Mon3 --> Mon4 
+Man3 --> Mon2 
+Man4 --> Mon3
+Man5 --> Mon1 
+Man6 --> Mon2
+Mon1 --> c
+Mon4 --> c
+@enduml

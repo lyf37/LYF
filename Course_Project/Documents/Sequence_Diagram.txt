@@ -1,0 +1,77 @@
+@startuml
+' Playtime Setting 
+Parents -> Manager: Playtime command 
+activate Manager
+
+Manager -> Cloud: Data/command upload 
+activate Cloud
+
+Cloud -> Monitor: Playtime setting 
+activate Monitor
+
+Monitor -> Children: Playtime reminder 
+activate Children
+
+
+Children --> Monitor: Playtime reminder response
+deactivate Children
+
+Monitor --> Cloud: Playtime setting response 
+deactivate Monitor
+
+Cloud --> Manager: Data download 
+deactivate Cloud
+
+Manager --> Parents: Playtime command response 
+deactivate Manager
+
+
+' Automatic Game process interrupt/continue  
+activate Cloud
+Cloud -> Monitor: Playtime comparison 
+activate Monitor
+
+Monitor -> Children: Game process interrupt/continue  
+activate Children
+
+
+Children --> Monitor: Game process interrupt/continue done 
+deactivate Children
+
+Monitor --> Cloud: Game process interrupt/continue message response 
+deactivate Monitor
+
+Cloud --> Manager: Game process interrupt/continue message download 
+deactivate Cloud
+
+activate Manager
+Manager --> Parents: Game process interrupt/continue notification
+deactivate Manager
+
+
+' Command Game process interrupt/continue  
+Parents -> Manager: Game process interrupt/continue command 
+activate Manager
+
+Manager -> Cloud: Data/command upload 
+activate Cloud
+
+Cloud -> Monitor: Game process interrupt/continue command download 
+activate Monitor
+
+Monitor -> Children: Game process interrupt/continue 
+activate Children
+
+
+Children --> Monitor: Game process interrupt/continue done 
+deactivate Children
+
+Monitor --> Cloud: Game process interrupt/continue message response 
+deactivate Monitor
+
+Cloud --> Manager: Game process interrupt/continue message download 
+deactivate Cloud
+
+Manager --> Parents: Game process interrupt/continue notification
+deactivate Manager
+@enduml
